@@ -1,0 +1,27 @@
+{
+  "name": "zellion",
+  "version": "1.1",
+  "homepage": "https://github.com/dirkgroenen/jQuery-viewport-checker",
+  "authors": "zelion <zellion.company@gmail.com>",
+  "description": "jQuery tabs plugin",
+  "main": "dist/js/zellion.tabs.js",
+  "dependencies": [
+    "jquery"
+  ],
+  "keywords": [
+    "jQuery",
+    "Zellion",
+    "Tabs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": ">=1.9.0 || >=2.0.0"
+  }
+}
