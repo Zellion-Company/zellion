@@ -6,7 +6,10 @@
     "Zellion <zellion.company@gmail.com>"
   ],
   "description": "jQuery tabs plugin",
-  "main": "/dist/js/zellion.tabs.js",
+  "main": [
+      "/dist/js/zellion.tabs.js",
+      "/dist/css/zellion.tabs.css"
+  ],
   "keywords": [
     "zellion",
     "tabs",
@@ -22,6 +25,6 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.3"
+    "jquery": ">=1.7"
   }
 }
