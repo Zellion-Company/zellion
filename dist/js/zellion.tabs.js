@@ -52,12 +52,6 @@
             if (settings.animation === 'fade') {
               $(this).closest('.tab').find('.tab__content').siblings().stop().fadeOut(0);
               $(this).closest('.tab').find('.tab__content[id=' + tabLinkSlice + ']').stop().fadeIn(settings.speed);
-            } else if (settings.animation === 'slide') {
-              $(this).closest('.tab').find('.tab__content').siblings().stop().slideUp(0);
-              $(this).closest('.tab').find('.tab__content[id=' + tabLinkSlice + ']').stop().slideDown(settings.speed);
-            } else if (settings.animation === 'slideToggle') {
-              $(this).closest('.tab').find('.tab__content').siblings().stop().slideUp(settings.speed);
-              $(this).closest('.tab').find('.tab__content[id=' + tabLinkSlice + ']').stop().slideDown(settings.speed);
             } else if (settings.animation === 'show') {
               $(this).closest('.tab').find('.tab__content').siblings().stop().hide();
               $(this).closest('.tab').find('.tab__content[id=' + tabLinkSlice + ']').stop().show();
@@ -74,13 +68,13 @@
 
       if (settings.autoplay === true) {
         function tabAutoplay() {
-          if ($('.tab__item.active').hasClass('lastTab')) {
-            $('.tab__item:first').find('.tab__link').trigger('click');
+          if ($this.find('.tab__item.active').hasClass('lastTab')) {
+            $this.find('.tab__item:first').find('.tab__link').trigger('click');
           } else {
-            $('.tab__item.active').next('.tab__item').find('.tab__link').trigger('click');
+            $this.find('.tab__item.active').next('.tab__item').find('.tab__link').trigger('click');
           }
         }
-        $('.tab__item:last').addClass('lastTab');
+        $this.find('.tab__item:last').addClass('lastTab');
         var int = setInterval(tabAutoplay, settings.interval);
       }
 
