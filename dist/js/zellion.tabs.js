@@ -1,25 +1,28 @@
 ;
 (function($) {
+
   'use strict';
+
+  var defaults = {
+    // Вкладка по-умолчанию
+    defaultTab: 0,
+    // автосмена вкладок
+    autoplay: false,
+    // интервал смены вкладок
+    interval: 5000,
+    // анимация смены вкладок
+    animation: 'show',
+    // скорость анимации смены вкладок
+    speed: 400,
+    // возможность записывать location.hash
+    hash: false,
+    beforeChange: function() {},
+    afterChange: function() {}
+  };
 
   $.fn.zellionTabs = function(options) {
 
-    var settings = $.extend({
-      // Вкладка по-умолчанию
-      defaultTab: 0,
-      // автосмена вкладок
-      autoplay: false,
-      // интервал смены вкладок
-      interval: 5000,
-      // анимация смены вкладок
-      animation: 'show',
-      // скорость анимации смены вкладок
-      speed: 400,
-      // возможность записывать location.hash
-      hash: false,
-      beforeChange: function() {},
-      afterChange: function() {}
-    }, options);
+    var settings = $.extend({}, defaults, options);
 
     return this.each(function() {
       settings.beforeChange();
@@ -36,7 +39,7 @@
       }
 
       function tabInit() {
-        $('.tab__link').on('click', function(event, cb) {
+        $this.on('click', '.tab__link', function(event, cb) {
           event.preventDefault();
           var tabLink = $(this).attr('href');
           var tabLinkSlice = tabLink.slice(1);
@@ -46,16 +49,16 @@
           if (!($(this).closest('.tab__item').hasClass('active'))) {
             settings.beforeChange()
             $(this).closest('.tab__item').addClass('active').siblings().removeClass('active');
-            if (settings.animation == 'fade') {
+            if (settings.animation === 'fade') {
               $(this).closest('.tab').find('.tab__content').siblings().stop().fadeOut(0);
               $(this).closest('.tab').find('.tab__content[id=' + tabLinkSlice + ']').stop().fadeIn(settings.speed);
-            } else if (settings.animation == 'slide') {
+            } else if (settings.animation === 'slide') {
               $(this).closest('.tab').find('.tab__content').siblings().stop().slideUp(0);
               $(this).closest('.tab').find('.tab__content[id=' + tabLinkSlice + ']').stop().slideDown(settings.speed);
-            } else if (settings.animation == 'slideToggle') {
+            } else if (settings.animation === 'slideToggle') {
               $(this).closest('.tab').find('.tab__content').siblings().stop().slideUp(settings.speed);
               $(this).closest('.tab').find('.tab__content[id=' + tabLinkSlice + ']').stop().slideDown(settings.speed);
-            } else if (settings.animation == 'show') {
+            } else if (settings.animation === 'show') {
               $(this).closest('.tab').find('.tab__content').siblings().stop().hide();
               $(this).closest('.tab').find('.tab__content[id=' + tabLinkSlice + ']').stop().show();
             }
