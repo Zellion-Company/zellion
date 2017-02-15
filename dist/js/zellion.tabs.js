@@ -17,7 +17,7 @@
     // Размах анимации slide
     scope: '200px',
     // скорость анимации смены вкладок
-    speed: 400,
+    speed: 300,
     // возможность записывать location.hash
     hash: false,
 
@@ -36,6 +36,9 @@
       var $this = $(this);
       var hashLink = window.location.hash;
       var hashLinkSlice = hashLink.slice(1);
+      if (settings.afterChange && typeof settings.afterChange === 'function') {
+          var callback = settings.afterChange
+      }
       if ((window.location.hash !== '' && settings.hash === true) && ($this.find('.tab__link[href=' + hashLink + ']').length == 1)) {
         $this.find('.tab__link[href=' + hashLink + ']').closest('.tab__item').addClass('active');
         $this.closest('.tab').find('#' + hashLinkSlice + '').addClass('block');
@@ -81,7 +84,9 @@
             $(this).closest('.tab__item').addClass('active').siblings().removeClass('active');
             if (settings.animation === 'show') {
               $(this).closest('.tab').find('.tab__content').siblings().stop().hide();
-              $(this).closest('.tab').find('.tab__content[id=' + tabLinkSlice + ']').stop().show();
+              $(this).closest('.tab').find('.tab__content[id=' + tabLinkSlice + ']').stop().show().animate({
+                opacity: 1
+              }, 100, callback);
             } else if (settings.animation === 'fade') {
               function slideNew() {
                 $this.find('.tab__content').css({
@@ -91,7 +96,7 @@
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().addClass('block').css('display', 'block');
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().animate({
                   opacity: 1
-                }, settings.speed)
+                }, settings.speed, callback)
               }
               function slideOld() {
                 $this.find('.tab__content.block').stop().animate({
@@ -110,7 +115,7 @@
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().animate({
                   top: '0',
                   opacity: 1
-                }, settings.speed)
+                }, settings.speed, callback)
               }
               function slideOld() {
                 $this.find('.tab__content.block').stop().animate({
@@ -131,7 +136,7 @@
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().animate({
                   right: '0',
                   opacity: 1
-                }, settings.speed)
+                }, settings.speed, callback)
               }
               function slideOld() {
                 $this.find('.tab__content.block').stop().animate({
@@ -152,7 +157,7 @@
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().animate({
                   bottom: '0',
                   opacity: 1
-                }, settings.speed)
+                }, settings.speed, callback)
               }
               function slideOld() {
                 $this.find('.tab__content.block').stop().animate({
@@ -173,7 +178,7 @@
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().animate({
                   left: '0',
                   opacity: 1
-                }, settings.speed)
+                }, settings.speed, callback)
               }
               function slideOld() {
                 $this.find('.tab__content.block').stop().animate({
@@ -189,16 +194,6 @@
               }
               slideOld()
             }
-
-
-
-
-            setTimeout(function() {
-              cb = settings.afterChange
-              if (cb && typeof cb === 'function') {
-                cb()
-              }
-            }, settings.speed);
           }
         });
       }
