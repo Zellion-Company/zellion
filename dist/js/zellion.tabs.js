@@ -84,6 +84,10 @@
               $(this).closest('.tab').find('.tab__content[id=' + tabLinkSlice + ']').stop().show();
             } else if (settings.animation === 'fade') {
               function slideNew() {
+                $this.find('.tab__content').css({
+                  opacity: 0,
+                  display: 'none'
+                });
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().addClass('block').css('display', 'block');
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().animate({
                   opacity: 1
