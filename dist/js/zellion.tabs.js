@@ -44,7 +44,6 @@
         $this.find('.tab__content').eq(settings.defaultTab).addClass('block');
       }
       if (settings.animation === 'slide') {
-        $this.find('.tab__content').css('display', 'none');
         if (settings.direction === 'top') {
           $this.find('.tab__content:not(.block)').css({
             opacity: 0,
