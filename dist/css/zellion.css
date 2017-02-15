@@ -1,5 +1,9 @@
+.tab__container{
+  overflow: hidden;
+}
 .tab__content {
     display: none;
+    position: relative;
 }
 .tab__content.block {
     display: block;
