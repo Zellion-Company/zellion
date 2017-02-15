@@ -87,12 +87,12 @@
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().addClass('block').css('display', 'block');
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().animate({
                   opacity: 1
-                }, 400)
+                }, settings.speed)
               }
               function slideOld() {
                 $this.find('.tab__content.block').stop().animate({
                   opacity: 0
-                }, 400, function() {
+                }, settings.speed, function() {
                   $this.find('.tab__content.block').stop().removeClass('block').css({
                     display: 'none',
                   });
@@ -106,13 +106,13 @@
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().animate({
                   top: '0',
                   opacity: 1
-                }, 400)
+                }, settings.speed)
               }
               function slideOld() {
                 $this.find('.tab__content.block').stop().animate({
                   top: '-200px',
                   opacity: 0
-                }, 400, function() {
+                }, settings.speed, function() {
                   $this.find('.tab__content.block').stop().removeClass('block').css({
                     display: 'none',
                     top: '200px'
@@ -127,13 +127,13 @@
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().animate({
                   right: '0',
                   opacity: 1
-                }, 400)
+                }, settings.speed)
               }
               function slideOld() {
                 $this.find('.tab__content.block').stop().animate({
                   right: '-200px',
                   opacity: 0
-                }, 400, function() {
+                }, settings.speed, function() {
                   $this.find('.tab__content.block').stop().removeClass('block').css({
                     display: 'none',
                     right: '200px'
@@ -148,13 +148,13 @@
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().animate({
                   bottom: '0',
                   opacity: 1
-                }, 400)
+                }, settings.speed)
               }
               function slideOld() {
                 $this.find('.tab__content.block').stop().animate({
                   bottom: '-200px',
                   opacity: 0
-                }, 400, function() {
+                }, settings.speed, function() {
                   $this.find('.tab__content.block').stop().removeClass('block').css({
                     display: 'none',
                     bottom: '200px'
@@ -169,13 +169,13 @@
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().animate({
                   left: '0',
                   opacity: 1
-                }, 400)
+                }, settings.speed)
               }
               function slideOld() {
                 $this.find('.tab__content.block').stop().animate({
                   left: '-200px',
                   opacity: 0
-                }, 400, function() {
+                }, settings.speed, function() {
                   $this.find('.tab__content.block').stop().removeClass('block').css({
                     display: 'none',
                     left: '200px'
