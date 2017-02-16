@@ -39,9 +39,9 @@
       if (settings.afterChange && typeof settings.afterChange === 'function') {
           var callback = settings.afterChange
       }
-      if ((window.location.hash !== '' && settings.hash === true) && ($this.find('.tab__link[href=' + hashLink + ']').length == 1)) {
-        $this.find('.tab__link[href=' + hashLink + ']').closest('.tab__item').addClass('active');
-        $this.closest('.tab').find('#' + hashLinkSlice + '').addClass('block');
+      if ((window.location.hash !== '' && settings.hash === true) && ($this.find('.tab__link[href="' + hashLink + '"]').length == 1)) {
+        $this.find('.tab__link[href="' + hashLink + '"]').closest('.tab__item').addClass('active');
+        $this.find('#' + hashLinkSlice + '').addClass('block');
       } else {
         $this.find('.tab__item').eq(settings.defaultTab).addClass('active');
         $this.find('.tab__content').eq(settings.defaultTab).addClass('block');
@@ -119,12 +119,12 @@
               }
               function slideOld() {
                 $this.find('.tab__content.block').stop().animate({
-                  top: '-200px',
+                  top: '-'+settings.scope+'',
                   opacity: 0
                 }, settings.speed, function() {
                   $this.find('.tab__content.block').stop().removeClass('block').css({
                     display: 'none',
-                    top: '200px'
+                    top: settings.scope
                   });
                   slideNew();
                 });
@@ -140,12 +140,12 @@
               }
               function slideOld() {
                 $this.find('.tab__content.block').stop().animate({
-                  right: '-200px',
+                  right: '-'+settings.scope+'',
                   opacity: 0
                 }, settings.speed, function() {
                   $this.find('.tab__content.block').stop().removeClass('block').css({
                     display: 'none',
-                    right: '200px'
+                    right: settings.scope
                   });
                   slideNew();
                 });
@@ -161,12 +161,12 @@
               }
               function slideOld() {
                 $this.find('.tab__content.block').stop().animate({
-                  bottom: '-200px',
+                  bottom: '-'+settings.scope+'',
                   opacity: 0
                 }, settings.speed, function() {
                   $this.find('.tab__content.block').stop().removeClass('block').css({
                     display: 'none',
-                    bottom: '200px'
+                    bottom: settings.scope
                   });
                   slideNew();
                 });
@@ -182,12 +182,12 @@
               }
               function slideOld() {
                 $this.find('.tab__content.block').stop().animate({
-                  left: '-200px',
+                  left: '-'+settings.scope+'',
                   opacity: 0
                 }, settings.speed, function() {
                   $this.find('.tab__content.block').stop().removeClass('block').css({
                     display: 'none',
-                    left: '200px'
+                    left: settings.scope
                   });
                   slideNew();
                 });
