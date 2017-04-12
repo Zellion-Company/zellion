@@ -88,7 +88,7 @@
                 opacity: 1
               }, 100, callback);
             } else if (settings.animation === 'fade') {
-              function slideNew() {
+              var slideNew = function () {
                 $this.find('.tab__content').css({
                   opacity: 0,
                   display: 'none'
@@ -98,7 +98,7 @@
                   opacity: 1
                 }, settings.speed, callback)
               }
-              function slideOld() {
+              var slideOld = function () {
                 $this.find('.tab__content.block').stop().animate({
                   opacity: 0
                 }, settings.speed, function() {
@@ -110,14 +110,14 @@
               }
               slideOld()
             } else if (settings.direction === 'top') {
-              function slideNew() {
+              var slideNew = function () {
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().addClass('block').css('display', 'block');
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().animate({
                   top: '0',
                   opacity: 1
                 }, settings.speed, callback)
               }
-              function slideOld() {
+              var slideOld = function () {
                 $this.find('.tab__content.block').stop().animate({
                   top: '-'+settings.scope+'',
                   opacity: 0
@@ -131,14 +131,14 @@
               }
               slideOld()
             } else if (settings.direction === 'right') {
-              function slideNew() {
+              var slideNew = function () {
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().addClass('block').css('display', 'block');
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().animate({
                   right: '0',
                   opacity: 1
                 }, settings.speed, callback)
               }
-              function slideOld() {
+              var slideOld = function () {
                 $this.find('.tab__content.block').stop().animate({
                   right: '-'+settings.scope+'',
                   opacity: 0
@@ -152,14 +152,14 @@
               }
               slideOld()
             } else if (settings.direction === 'bottom') {
-              function slideNew() {
+              var slideNew = function () {
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().addClass('block').css('display', 'block');
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().animate({
                   bottom: '0',
                   opacity: 1
                 }, settings.speed, callback)
               }
-              function slideOld() {
+              var slideOld = function () {
                 $this.find('.tab__content.block').stop().animate({
                   bottom: '-'+settings.scope+'',
                   opacity: 0
@@ -173,14 +173,14 @@
               }
               slideOld()
             } else if (settings.direction === 'left') {
-              function slideNew() {
+              var slideNew = function () {
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().addClass('block').css('display', 'block');
                 $this.find('.tab__content[id=' + tabLinkSlice + ']').stop().animate({
                   left: '0',
                   opacity: 1
                 }, settings.speed, callback)
               }
-              function slideOld() {
+              var slideOld = function () {
                 $this.find('.tab__content.block').stop().animate({
                   left: '-'+settings.scope+'',
                   opacity: 0
@@ -200,7 +200,7 @@
 
 
       if (settings.autoplay === true) {
-        function tabAutoplay() {
+        var tabAutoplay = function () {
           if ($this.find('.tab__item.active').hasClass('lastTab')) {
             $this.find('.tab__item:first').find('.tab__link').trigger('click');
           } else {
@@ -212,10 +212,7 @@
       }
 
 
-      $(window).on('load', function() {
-        tabInit();
-      });
-      $('*').on('resize', function() {
+      $(window).on('load resize', function() {
         tabInit();
       });
     });
